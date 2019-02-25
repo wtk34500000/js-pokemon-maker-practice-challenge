@@ -1,6 +1,5 @@
-# JS Pokemon Search Assignment
+# JS Pokemon Maker
 
-![pikachu](https://media.giphy.com/media/uLnPIWsqIz2aA/giphy.gif)
 
 ## Objectives
 
@@ -8,23 +7,34 @@
 - Events and Event Handlers
 - Callbacks
 - Fetch
-
-
 ---
 
-Hello, your assignment today is to re-create the functionality of our
-[Pokemon search engine](https://learn-co-curriculum.github.io/js-pokemon-search-practice-assignment/).
-
-p.s. Don't forget to include the ability to toggle the card image and reset the card image upon submission of a new
-search.
+Hello, your assignment today is to create a full CRUD app with the pokemon API.
 
 ---
 
 ## Instructions
 
-- We're building out a search feature in our application (no backend persistence).
+- Fetch all pokemon and create a pokemon card for each.
 
-- A user should be able to search for a Pokemon and flip that Pokemon card to see its alternate sprite.
+- User should be able to create new pokemon with a minimum of a name, image, height, weight, and checkbox to pick which abilities the new pokemon will have.
+
+- Abilities include (but are not limited to):
+  - overgrow
+  - chlorophyll
+  - blaze
+  - solar-power
+  - torrent
+  - rain-dish
+  - shield-dust
+  - runaway
+  - shed skin
+  - electric shock
+  - poison-point
+  - cute-charm
+  - flash-fire
+
+- A user should be able to edit and delete any pokemon they create, or that is already existing in the database.
 
 - The file `db.json` is your server. Start your server by doing the following in your terminal:
   - `$ npm install -g json-server`
@@ -34,10 +44,10 @@ search.
 
 ### Deliverables:
 
-1.  Implement a filter functionality for your Pokemon list.
-2.  Implement a flip functionality on each Pokemon.
-3.  Your search should include pokemon whose names are **not** exact matches
-4.  Add a way to show users details for a particular pokemon: moves, abilities, etc.
+1.  Implement checkbox functionality for abilities.
+2.  Implement a click functionality to see more details about the pokemon as well as edit and delete buttons.
+3.  When edit is clicked, it should replace the pokemon's information with a edit form.
+4.  When delete is clicked, it should be deleted from both the frontend and the backend.
 
 ---
 
@@ -53,6 +63,9 @@ Each Pokemon card might look something like this in HTML:
       <img data-id="7" data-action="flip" class="toggle-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png">
     </div>
   </div>
+  <div class="pokemon-info">
+    <!-- Pokemon info here -->
+  </div>
 </div>
 ```
 
@@ -60,4 +73,8 @@ Take a look at `/style.css` if you're curious about how this app is styled. Appl
 
 ---
 
-![](https://media.giphy.com/media/HZpCCbcWc0a3u/giphy.gif)
+BONUS:
+1. More complex create form: ability to choose stats, moves, etc. (have fun!)
+2. Delete functionality should bring user to confirmation and cancel buttons in which the user can choose to fully delete or go back to the information area of card.
+3. Instead of edit form only replacing the info div, the edit form should take up the entire window. There should be a back button to return to index, and a submit to confirm edits and return to the changed index page.
+4. Add search functionality by ability.
