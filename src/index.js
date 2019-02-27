@@ -131,37 +131,83 @@ document.addEventListener('DOMContentLoaded', () => {
   const handleEditForm = (event, pokemon) =>{
     const div = document.querySelector('.pokemon-info')
     div.innerHTML = editFormHtml(pokemon)
+    const form = document.querySelector('#edit-form')
+    form.addEventListener('submit', (e) => {
+      hanldeEditButton(e, pokemon)
+    })
+
   }
 
+    const hanldeEditButton= (e, pokemon)=>{
+      e.preventDefault()
+      const name=document.querySelector('#name2').value
+      
+      const height=document.querySelector('#height2').value
+      const weight=document.querySelector('#weight2').value
+      const imgUrl=document.querySelector('#imgUrl2').value
+      
+
+      const checkbox=document.querySelectorAll('input[type="checkbox"]')
+
+      const abilityArray=[]
+
+    
+      checkbox.forEach((abiChecked)=> {
+        // We need to push the name into the array and use 'checked' as the condition
+        if(abiChecked.checked){
+          abilityArray.push(abiChecked.name)
+        }
+      })
+    
+    const pokemonData={
+      id: pokemon.id,
+      name: name,
+      height: height,
+      weight: weight,
+      sprites: {
+       front: imgUrl
+     },
+      abilities: abilityArray
+    }
+    
+    updatePokemon(pokemonData)
+  
+  }
+
+
   const editFormHtml = (pokemon) =>{
-      return `<form class ="edit-pokemon-form">
+      return `<form id="edit-form" class ="edit-pokemon-form">
       <h1>Edit Pokemon:</h1>
       <label for="name">Pokemon Name: </label>
-      <input type="text" id="name", name="name" value=${pokemon.name}><br>
+      <input type="text" id="name2", name="name" value=${pokemon.name}><br>
       <label for="height">Pokemon Height: </label>
-      <input type="number" id="height", name="height" value=${pokemon.height}><br>
+      <input type="number" id="height2", name="height" value=${pokemon.height}><br>
       <label for="weight">Pokemon Weight: </label>
-      <input type="number" id="weight", name="weight" value=${pokemon.weight}><br>
+      <input type="number" id="weight2", name="weight" value=${pokemon.weight}><br>
       <label for="imgUrl">Pokemon Image Url: </label>
-      <input type="url" id="imgUrl", name="imgUrl" value=${pokemon.sprites.front}><br>
+      <input type="url" id="imgUrl2", name="imgUrl" value=${pokemon.sprites.front}><br>
 
       <label>Abilities: </label><br>
-      <input type="checkbox" name="overgrow" value="overgrow"> overgrow 
-      <input type="checkbox" name="chlorophyll" value="chlorophyll"> chlorophyll
-      <input type="checkbox" name="blaze" value="blaze"> blaze
-      <input type="checkbox" name="solar-power" value="solar-power"> solar-power
-      <input type="checkbox" name="torrent" value="torrent"> torrent
-      <input type="checkbox" name="rain-dish" value="rain-dish"> rain-dish
-      <input type="checkbox" name="shield-dust" value="shield-dust"> shield-dust
-      <input type="checkbox" name="runaway" value="runaway"> runaway 
-      <input type="checkbox" name="shed-skin" value="shed-skin"> shed-skin 
-      <input type="checkbox" name="electric-shock" value="electric-shock"> electric-shock 
-      <input type="checkbox" name="poison-point" value="poison-point"> poison-point 
-      <input type="checkbox" name="cute-charm" value="cute-charm"> cute-charm 
-      <input type="checkbox" name="flash-fire" value="flash-fire"> flash-fire <br>
-    
-      <input type="submit" id='submit' value="Edit Pokemon">
-      </form>`
+      <input type="checkbox" name="overgrow" value="overgrow" ${pokemon.abilities.includes("overgrow") ? 'checked' : ''}> overgrow 
+      <input type="checkbox" name="chlorophyll" value="chlorophyll" ${pokemon.abilities.includes("chlorophyll") ? 'checked' : ''}> chlorophyll
+      <input type="checkbox" name="blaze" value="blaze" ${pokemon.abilities.includes("blaze") ? 'checked' : ''}> blaze
+      <input type="checkbox" name="solar-power" value="solar-power" ${pokemon.abilities.includes("solar-power") ? 'checked' : ''}> solar-power
+      <input type="checkbox" name="torrent" value="torrent" ${pokemon.abilities.includes("torrent") ? 'checked' : ''}> torrent
+      <input type="checkbox" name="rain-dish" value="rain-dish" ${pokemon.abilities.includes("rain-dish") ? 'checked' : ''}> rain-dish
+      <input type="checkbox" name="shield-dust" value="shield-dust" ${pokemon.abilities.includes("shield-dust") ? 'checked' : ''}> shield-dust
+      <input type="checkbox" name="run-away" value="run-away" ${pokemon.abilities.includes("run-away") ? 'checked' : ''}> run-away 
+      <input type="checkbox" name="shed-skin" value="shed-skin" ${pokemon.abilities.includes("shed-skin") ? 'checked' : ''}> shed-skin 
+      <input type="checkbox" name="electric-shock" value="electric-shock" ${pokemon.abilities.includes("electric-shock") ? 'checked' : ''}> electric-shock 
+      <input type="checkbox" name="poison-point" value="poison-point" ${pokemon.abilities.includes("poison-point") ? 'checked' : ''}> poison-point 
+      <input type="checkbox" name="cute-charm" value="cute-charm" ${pokemon.abilities.includes("cute-charm") ? 'checked' : ''}> cute-charm 
+      <input type="checkbox" name="flash-fire" value="flash-fire" ${pokemon.abilities.includes("flash-fire") ? 'checked' : ''}> flash-fire <br>
+
+      <input type="submit" id='submit2' value="Edit Pokemon"> <br>
+      </form>
+      <form id="go-back">
+        <input type="submit" id='submit3' value="Go Back"> <br>
+      </form>
+      `
   }
 
   fetchPokemon().then(pokemons => {
