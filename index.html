@@ -4,14 +4,46 @@
     <meta charset="utf-8">
     <title>Find all the Pokemon</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script type="text/javascript" src="src/index.js"></script>
   </head>
   <body>
+    <form id='submit' class ="pokemon-form">
+      <h1>Create Pokemon:</h1>
+      <label for="name">Pokemon Name: </label>
+      <input type="text" id="name", name="name" required><br>
+      <label for="height">Pokemon Height: </label>
+      <input type="number" id="height", name="height" required><br>
+      <label for="weight">Pokemon Weight: </label>
+      <input type="number" id="weight", name="weight" required><br>
+      <label for="imgUrl">Pokemon Image Url: </label>
+      <input type="url" id="imgUrl", name="imgUrl" required><br>
+
+      <label>Abilities: </label><br>
+      <input type="checkbox" name="overgrow" value="overgrow"> overgrow 
+      <input type="checkbox" name="chlorophyll" value="chlorophyll"> chlorophyll
+      <input type="checkbox" name="blaze" value="blaze"> blaze
+      <input type="checkbox" name="solar-power" value="solar-power"> solar-power
+      <input type="checkbox" name="torrent" value="torrent"> torrent
+      <input type="checkbox" name="rain-dish" value="rain-dish"> rain-dish
+      <input type="checkbox" name="shield-dust" value="shield-dust"> shield-dust
+      <input type="checkbox" name="run-away" value="run-away"> run-away 
+      <input type="checkbox" name="shed-skin" value="shed-skin"> shed-skin 
+      <input type="checkbox" name="electric-shock" value="electric-shock"> electric-shock 
+      <input type="checkbox" name="poison-point" value="poison-point"> poison-point 
+      <input type="checkbox" name="cute-charm" value="cute-charm"> cute-charm 
+      <input type="checkbox" name="flash-fire" value="flash-fire"> flash-fire <br>
+     
+      <input type="submit" value="Create Pokemon">
+       
+      
+    </form>
     <div id="container">
+      
       <img id="pokemon-logo" src="images/pokemon.png" alt="">
 
       <!-- Add in html here -->
 
     </div>
+    <script type="text/javascript" src="src/index.js"></script>
+
   </body>
 </html>

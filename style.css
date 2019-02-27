@@ -23,8 +23,8 @@ body {
 }
 
 #pokemon-logo {
-  width: 300px;
-  margin-left: 330px;
+  width: 50vw;
+  margin: 0 25vw;
 }
 
 input:focus {
@@ -55,4 +55,9 @@ input:focus {
 
 .flip-image {
   color: #2d72fc;
+}
+
+.pokemon-info {
+  height: 10vh;
+  width: 230px;
 }
